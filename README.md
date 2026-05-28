@@ -115,7 +115,7 @@ const paymentRequest = {
   redirect_to: "http://localhost:3000/success",
   notify_url: "http://localhost:4000/response",
   cancel_url: "http://localhost:3000/cancel",
-  type: "php",
+  type: "nodejs",
 };
 ```
 
