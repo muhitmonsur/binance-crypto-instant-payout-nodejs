@@ -36,7 +36,7 @@ function flattenParams(
 
 /**
  * PHP-compatible sorted query string.
- * Mirrors Laravel package: ksort → http_build_query.
+ * Mirrors nodejs package: ksort → http_build_query.
  */
 export function buildQueryString(params: Record<string, unknown>): string {
   const sorted: Record<string, unknown> = {};
