@@ -1,0 +1,97 @@
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+/**
+ * Flatten nested objects/arrays into PHP `http_build_query`-style key/value pairs.
+ */
+function flattenParams(
+  input: Record<string, unknown>,
+  prefix = ''
+): Array<[string, string]> {
+  const pairs: Array<[string, string]> = [];
+
+  for (const [key, value] of Object.entries(input)) {
+    if (value === undefined || value === null) continue;
+
+    const fullKey = prefix ? `${prefix}[${key}]` : key;
+
+    if (Array.isArray(value)) {
+      value.forEach((item, index) => {
+        if (item !== null && typeof item === 'object' && !Array.isArray(item)) {
+          pairs.push(
+            ...flattenParams(item as Record<string, unknown>, `${fullKey}[${index}]`)
+          );
+        } else {
+          pairs.push([`${fullKey}[${index}]`, String(item)]);
+        }
+      });
+    } else if (typeof value === 'object') {
+      pairs.push(...flattenParams(value as Record<string, unknown>, fullKey));
+    } else {
+      pairs.push([fullKey, String(value)]);
+    }
+  }
+
+  return pairs;
+}
+
+/**
+ * PHP-compatible sorted query string.
+ * Mirrors Laravel package: ksort → http_build_query.
+ */
+export function buildQueryString(params: Record<string, unknown>): string {
+  const sorted: Record<string, unknown> = {};
+  for (const key of Object.keys(params).sort()) {
+    sorted[key] = params[key];
+  }
+
+  const pairs = flattenParams(sorted);
+  return pairs
+    .map(
+      ([k, v]) =>
+        `${encodeURIComponent(k).replace(/%20/g, '+')}=${encodeURIComponent(v).replace(/%20/g, '+')}`
+    )
+    .join('&');
+}
+
+export function signPayload(query: string, secretKey: string): string {
+  return createHmac('sha256', secretKey).update(query).digest('hex');
+}
+
+export function createAuthHeader(publicKey: string, signature: string): string {
+  const token = Buffer.from(`${publicKey}:${signature}`).toString('base64');
+  return `Bearer ${token}`;
+}
+
+export function parseAuthToken(
+  authorization?: string | null,
+  authStr?: string | null
+): { publicKey: string; signature: string } | null {
+  let encoded: string | null = null;
+
+  if (authorization) {
+    encoded = authorization.replace(/^Bearer\s+/i, '').trim();
+  } else if (authStr) {
+    encoded = String(authStr).trim();
+  }
+
+  if (!encoded) return null;
+
+  try {
+    const decoded = Buffer.from(encoded, 'base64').toString('utf8');
+    const idx = decoded.indexOf(':');
+    if (idx === -1) return null;
+    return {
+      publicKey: decoded.slice(0, idx),
+      signature: decoded.slice(idx + 1),
+    };
+  } catch {
+    return null;
+  }
+}
+
+export function safeEqual(a: string, b: string): boolean {
+  const bufA = Buffer.from(a);
+  const bufB = Buffer.from(b);
+  if (bufA.length !== bufB.length) return false;
+  return timingSafeEqual(bufA, bufB);
+}
