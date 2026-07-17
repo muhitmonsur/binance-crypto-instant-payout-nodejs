@@ -1,19 +1,64 @@
 {
-  "name": "prayer_url_node",
+  "name": "@payerurl/crypto-checkout",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Binance and crypto payment gateway SDK for Node.js — works with Express, Next.js, NestJS, React, Vue, Angular backends",
+  "keywords": [
+    "binance",
+    "usdt",
+    "usdc",
+    "bitcoin",
+    "crypto payment",
+    "ethereum",
+    "binance payment",
+    "payment gateway",
+    "crypto",
+    "payerurl",
+    "react",
+    "vue",
+    "angular",
+    "nextjs",
+    "express"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "crypto-js": "^4.1.1",
-    "express": "^4.18.2",
-    "nodemon": "^3.0.1"
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "author": {
+    "name": "Rashiqul Rony",
+    "email": "rashiqulrony@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/payerurl/binance-and-crypto-checkout"
+  },
+  "bugs": {
+    "url": "https://github.com/payerurl/binance-and-crypto-checkout/issues"
+  },
+  "homepage": "https://payerurl.com",
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2"
   }
 }
