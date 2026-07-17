@@ -45,7 +45,7 @@ export class Payerurl {
         currency = 'usd',
         data,
         orderItems,
-        type = 'lrb',
+        type = 'nodejs',
       } = request;
 
       if (!invoiceId) {
