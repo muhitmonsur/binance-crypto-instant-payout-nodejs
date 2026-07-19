@@ -1,5 +1,5 @@
 {
-  "name": "@payerurl/crypto-checkout",
+  "name": "@payerurl/binance-crypto-instant-payout-nodejs",
   "version": "1.0.0",
   "description": "Binance and crypto payment gateway SDK for Node.js — works with Express, Next.js, NestJS, React, Vue, Angular backends",
   "keywords": [
