@@ -1,4 +1,4 @@
-# @payerurl/crypto-checkout
+# @payerurl/binance-crypto-instant-payout
 
 Binance & crypto payment gateway SDK for **Node.js** — use with Express, Next.js, NestJS, Nuxt, or any backend behind React / Vue / Angular.
 
