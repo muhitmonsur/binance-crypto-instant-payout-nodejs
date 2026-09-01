@@ -1,4 +1,4 @@
-# @payerurl/binance-crypto-instant-payout
+# binance-crypto-instant-payout-nodejs
 
 Binance & crypto payment gateway SDK for **Node.js** — use with Express, Next.js, NestJS, Nuxt, or any backend behind React / Vue / Angular.
 
@@ -13,7 +13,7 @@ Binance & crypto payment gateway SDK for **Node.js** — use with Express, Next.
 ## Install
 
 ```bash
-npm install @payerurl/crypto-checkout
+npm i binance-crypto-instant-payout-nodejs
 ```
 
 Local development (this repo):
