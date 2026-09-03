@@ -1,6 +1,6 @@
 {
   "name": "binance-crypto-instant-payout-nodejs",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "description": "Server-side Binance and crypto payment gateway SDK for Node.js frameworks",
   "keywords": [
     "binance",
