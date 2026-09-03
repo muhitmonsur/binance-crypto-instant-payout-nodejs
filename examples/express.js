@@ -1,12 +1,12 @@
 /**
  * Express example — create payment + webhook notify
  *
- * npm i express @payerurl/crypto-checkout
+ * npm i express @payerurl/binance-crypto-instant-payout-nodejs
  * OR: npm i express && npm link from this package folder
  */
 
 import express from 'express';
-import { Payerurl } from '../src/index.js';
+import { Payerurl } from '@payerurl/binance-crypto-instant-payout-nodejs';
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));

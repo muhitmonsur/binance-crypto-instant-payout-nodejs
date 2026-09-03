@@ -5,6 +5,8 @@ export interface PayerurlConfig {
   secretKey: string;
   /** Payment API endpoint (default: https://api-v2.payerurl.com/api/payment) */
   apiUrl?: string;
+  /** Optional Fetch-compatible transport, useful for tests or custom runtimes. */
+  fetch?: typeof globalThis.fetch;
 }
 
 export interface OrderItem {
@@ -39,7 +41,7 @@ export interface PaymentRequest {
   data: PaymentCustomerData;
   /** Optional line items */
   orderItems?: OrderItem[];
-  /** Internal type flag sent to API (default: lrb) */
+  /** Internal type flag sent to API (default: nodejs) */
   type?: string;
 }
 

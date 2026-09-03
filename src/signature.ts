@@ -27,7 +27,10 @@ function flattenParams(
     } else if (typeof value === 'object') {
       pairs.push(...flattenParams(value as Record<string, unknown>, fullKey));
     } else {
-      pairs.push([fullKey, String(value)]);
+      // PHP casts booleans to 1/0 when building a query string.
+      const normalized =
+        typeof value === 'boolean' ? (value ? '1' : '0') : String(value);
+      pairs.push([fullKey, normalized]);
     }
   }
 
@@ -48,9 +51,18 @@ export function buildQueryString(params: Record<string, unknown>): string {
   return pairs
     .map(
       ([k, v]) =>
-        `${encodeURIComponent(k).replace(/%20/g, '+')}=${encodeURIComponent(v).replace(/%20/g, '+')}`
+        `${phpUrlEncode(k)}=${phpUrlEncode(v)}`
     )
     .join('&');
+}
+
+/** Encode using PHP's RFC1738 `urlencode`, as used by `http_build_query`. */
+function phpUrlEncode(value: string): string {
+  return encodeURIComponent(value)
+    .replace(/[!'()~*]/g, (character) =>
+      `%${character.charCodeAt(0).toString(16).toUpperCase()}`
+    )
+    .replace(/%20/g, '+');
 }
 
 export function signPayload(query: string, secretKey: string): string {
@@ -75,6 +87,11 @@ export function parseAuthToken(
   }
 
   if (!encoded) return null;
+
+  // Buffer.from(value, 'base64') silently accepts malformed input.
+  if (!/^[A-Za-z0-9+/]+={0,2}$/.test(encoded) || encoded.length % 4 === 1) {
+    return null;
+  }
 
   try {
     const decoded = Buffer.from(encoded, 'base64').toString('utf8');

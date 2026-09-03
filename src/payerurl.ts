@@ -20,6 +20,7 @@ export class Payerurl {
   private readonly publicKey: string;
   private readonly secretKey: string;
   private readonly apiUrl: string;
+  private readonly fetch: typeof globalThis.fetch;
 
   constructor(config: PayerurlConfig) {
     if (!config?.publicKey || !config?.secretKey) {
@@ -31,6 +32,13 @@ export class Payerurl {
     this.publicKey = config.publicKey;
     this.secretKey = config.secretKey;
     this.apiUrl = config.apiUrl ?? DEFAULT_API_URL;
+    this.fetch = config.fetch ?? globalThis.fetch;
+
+    if (typeof this.fetch !== 'function') {
+      throw new Error(
+        'Payerurl requires a Fetch-compatible runtime (Node.js 18 or newer) or config.fetch'
+      );
+    }
   }
 
   /**
@@ -48,11 +56,11 @@ export class Payerurl {
         type = 'nodejs',
       } = request;
 
-      if (!invoiceId) {
+      if (typeof invoiceId !== 'string' || !invoiceId.trim()) {
         return { status: false, message: 'invoiceId is required' };
       }
-      if (amount === undefined || amount === null) {
-        return { status: false, message: 'amount is required' };
+      if (!Number.isSafeInteger(amount) || amount <= 0) {
+        return { status: false, message: 'amount must be a positive integer' };
       }
       if (!data?.redirect_url || !data?.cancel_url || !data?.notify_url) {
         return {
@@ -70,7 +78,7 @@ export class Payerurl {
       const args: Record<string, unknown> = {
         order_id: invoiceId,
         amount,
-        currency: currency.toLowerCase(),
+        currency: currency.trim().toLowerCase(),
         billing_fname: data.first_name ?? 'First name',
         billing_lname: data.last_name ?? 'Last name',
         billing_email: data.email ?? 'test@email.com',
@@ -88,7 +96,7 @@ export class Payerurl {
       const signature = signPayload(query, this.secretKey);
       const authorization = createAuthHeader(this.publicKey, signature);
 
-      const response = await fetch(this.apiUrl, {
+      const response = await this.fetch(this.apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
@@ -113,10 +121,12 @@ export class Payerurl {
         };
       }
 
-      return {
-        status: false,
-        message: 'Something went wrong',
-      };
+      const apiMessage =
+        typeof body.message === 'string' && body.message.trim()
+          ? body.message
+          : 'Something went wrong';
+
+      return { status: false, message: apiMessage };
     } catch (error) {
       const message =
         error instanceof Error ? error.message : 'Something went wrong';

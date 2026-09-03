@@ -1,7 +1,7 @@
 {
   "name": "@payerurl/binance-crypto-instant-payout-nodejs",
   "version": "1.0.0",
-  "description": "Binance and crypto payment gateway SDK for Node.js — works with Express, Next.js, NestJS, React, Vue, Angular backends",
+  "description": "Server-side Binance and crypto payment gateway SDK for Node.js frameworks",
   "keywords": [
     "binance",
     "usdt",
@@ -37,12 +37,15 @@
   ],
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "check": "tsc --noEmit",
+    "test": "npm run build && node --test",
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
     "prepublishOnly": "npm run build"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
+  "sideEffects": false,
   "author": {
     "name": "Rashiqul Rony",
     "email": "rashiqulrony@gmail.com"
