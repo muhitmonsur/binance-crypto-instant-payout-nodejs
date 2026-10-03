@@ -1,4 +1,4 @@
-#  Crypto gateway with Binance API || telegram payment || all instant payout  
+#  Crypto gateway || Binance API ( do not need merchant account) || all instant payout  
 
 [![npm version](https://img.shields.io/npm/v/binance-crypto-instant-payout-nodejs.svg)](https://www.npmjs.com/package/binance-crypto-instant-payout-nodejs)
 [![npm downloads](https://img.shields.io/npm/dm/binance-crypto-instant-payout-nodejs.svg)](https://www.npmjs.com/package/binance-crypto-instant-payout-nodejs)
@@ -7,41 +7,29 @@
 Server-side SDK for connecting **Node.js** applications through payerurl api . Use it with Express, Next.js, NestJS, Nuxt, or any Node backend serving React, Vue, Angular, and other frontends.
 
 > Get paid directly to your crypto wallet instantly. Accept BTC, ETH, USDT, and USDC from customers across all major networks.
+> Accept payment using your binance regular account QR code payment (C2C). 
 
 **Powered by [PayerURL](https://payerurl.com)**
 
-🔴 [CHECKOUT DEMO](https://plugin.payerurl.com/) | 🔑 [Get API Key](https://dash.payerurl.com) | 💬 [Telegram Support](https://t.me/Payerurl)
+ 🔑 [Get API Key](https://dash.payerurl.com) | 💬 [Telegram Support](https://t.me/Payerurl)
 
 ---
 
 ## Overview
 
-PayerURL connects your application to a hosted cryptocurrency checkout while keeping settlement non-custodial. PayerURL does not hold your private keys or merchant funds: customers pay through the hosted checkout and completed payments are confirmed to your application through a signed webhook.
+This payment gateway lets customers pay directly on your store's checkout page. Once paid, the order automatically confirms via instant webhooks. Store owners can view complete transaction records in their PayerURL dashboard. PayerURL is safe, secure, and uses real-time exchange rates.
 
-Depending on the wallets and payment methods enabled in your PayerURL account, the checkout can provide:
+Depending on your PayerURL settings, your checkout offers:
 
-- Bitcoin, Ethereum, USDT, USDC, TON, Binance Pay, and Binance QR payments
-- More than 10 cryptocurrency networks, including TRC20, ERC20, and BEP20 options
-- Prices in 169+ fiat currencies with live fiat-to-crypto conversion
-- Card or bank payment options that settle to the merchant in cryptocurrency, where available
-- XPUB-based address rotation for generating a fresh receiving address per order
-- Direct settlement to a configured wallet, hardware wallet, cold storage, or Binance account
-
-Payment methods, currencies, networks, and regional availability are controlled by PayerURL and your account configuration. This SDK creates checkout sessions and verifies callbacks; wallet and XPUB configuration is managed in the [PayerURL dashboard](https://dash.payerurl.com).
+- Popular Cryptos: Accepts Bitcoin, Ethereum, USDT, and USDC.
+- Major Networks: Works on TRON (TRC20), Ethereum (ERC20), Binance Smart Chain (BEP20), and Bitcoin networks.
+- Binance QR Code: Customers can pay by scanning a QR code with a personal Binance account—no merchant account needed.
+- Global Currencies: Supports 169+ local currencies with automatic, live conversion to crypto.
+- Card Payments: Options to buy crypto and pay instantly using credit cards, debit cards, Google Pay, or Apple Pay.
+- New Address Per Order: Creates a unique receiving address for every order using XPUB to keep payments private and secure.
 
 ---
 
-## Why use PayerURL with Node.js?
-
-| Feature | Detail |
-|---|---|
-| Non-custodial settlement | Payments are routed to the wallet or Binance account configured by the merchant |
-| Framework-independent | Works in Node.js server routes, controllers, services, and serverless functions with a Node runtime |
-| Signed requests and webhooks | HMAC-SHA256 signing is built into the SDK |
-| Hosted checkout | Your backend receives a checkout URL and redirects the customer |
-| Live conversion | Local fiat prices are converted to the selected cryptocurrency at checkout |
-| XPUB-ready | Rotating receiving addresses can be configured in the PayerURL dashboard |
-| No runtime dependencies | The published SDK uses the Node.js platform APIs |
 
 ---
 
@@ -437,36 +425,6 @@ Your Wallet ← Funds ← Blockchain confirmation
               Your notify_url ← Webhook (verify with SDK)
 ```
 
----
-
-## Supported cryptocurrencies and payment methods
-
-The hosted checkout exposes the methods enabled for your PayerURL account.
-
-| Currency or method | Network or behavior |
-|---|---|
-| Bitcoin (BTC) | Bitcoin network; XPUB address rotation can be configured |
-| Ethereum (ETH) | Ethereum/ERC20 receiving wallet |
-| USDT | TRC20, ERC20, and supported BEP20 options |
-| USDC | ERC20 and supported BEP20 options |
-| TON | The Open Network |
-| Binance Pay | Binance account payment and QR scan-to-pay |
-| Card or bank | Fiat payment converted to cryptocurrency, where available |
-
-### XPUB wallet integration
-
-Add a supported extended public key (`xpub`, `ypub`, or `zpub`) in the PayerURL dashboard to derive a unique receiving address for each order. This avoids address reuse and supports high-volume checkout without exposing a private key to this SDK. Address derivation and supported HD wallet paths are handled by PayerURL, not by your Node application.
-
-### Binance Pay and QR checkout
-
-Customers can complete a payment by scanning the Binance QR code shown on the hosted checkout. Settlement goes to the Binance account connected in your PayerURL configuration. Binance personal and merchant configurations may be available depending on the account.
-
-### Fiat-to-crypto checkout
-
-Where enabled, customers can pay by supported credit card, debit card, or bank method while the merchant receives cryptocurrency. Conversion uses the checkout's live market rate. Availability and compliance requirements vary by country, provider, and PayerURL account.
-
----
-
 ## Support
 
 | Channel | Link |
@@ -474,7 +432,6 @@ Where enabled, customers can pay by supported credit card, debit card, or bank m
 | Telegram | [t.me/Payerurl](https://t.me/Payerurl) |
 | Website | [payerurl.com](https://payerurl.com) |
 | Dashboard | [dash.payerurl.com](https://dash.payerurl.com) |
-| WordPress integration | [ABC Crypto Checkout on WordPress.org](https://wordpress.org/plugins/payerurl-crypto-currency-payment-gateway-for-woocommerce/) |
 
 ## License
 
