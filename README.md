@@ -1,12 +1,12 @@
-# Binance Crypto Instant Payout for Node.js
+#  Crypto gateway with Binance API || telegram payment || all instant payout  
 
 [![npm version](https://img.shields.io/npm/v/binance-crypto-instant-payout-nodejs.svg)](https://www.npmjs.com/package/binance-crypto-instant-payout-nodejs)
 [![npm downloads](https://img.shields.io/npm/dm/binance-crypto-instant-payout-nodejs.svg)](https://www.npmjs.com/package/binance-crypto-instant-payout-nodejs)
 [![license](https://img.shields.io/npm/l/binance-crypto-instant-payout-nodejs.svg)](LICENSE)
 
-Server-side SDK for connecting **Node.js** applications to PayerURL's non-custodial cryptocurrency checkout. Use it with Express, Next.js, NestJS, Nuxt, or any Node backend serving React, Vue, Angular, and other frontends.
+Server-side SDK for connecting **Node.js** applications through payerurl api . Use it with Express, Next.js, NestJS, Nuxt, or any Node backend serving React, Vue, Angular, and other frontends.
 
-> Accept Bitcoin, Ethereum, USDT, USDC, TON, Binance Pay, and other supported payment methods, with settlement directed to your configured wallet or Binance account.
+> Get paid directly to your crypto wallet instantly. Accept BTC, ETH, USDT, and USDC from customers across all major networks.
 
 **Powered by [PayerURL](https://payerurl.com)**
 
