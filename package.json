@@ -48,10 +48,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/payerurl/binance-and-crypto-checkout.git"
+    "url": "git+https://github.com/muhitmonsur/binance-crypto-instant-payout-nodejs.git"
   },
   "bugs": {
-    "url": "https://github.com/payerurl/binance-and-crypto-checkout/issues"
+    "url": "https://github.com/muhitmonsur/binance-crypto-instant-payout-nodejs/issues"
   },
   "homepage": "https://payerurl.com",
   "devDependencies": {
