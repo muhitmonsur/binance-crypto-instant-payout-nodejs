@@ -1,6 +1,6 @@
 {
   "name": "Crypto-payment-gateway-Binance-API",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Crypto payment gateway SDK and Binance API for Node.js frameworks",
   "keywords": [
     "crypto checkout",
