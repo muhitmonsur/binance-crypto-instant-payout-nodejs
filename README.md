@@ -7,6 +7,7 @@
 Server-side SDK for connecting **Node.js** applications through payerurl api . Use it with Express, Next.js, NestJS, Nuxt, or any Node backend serving React, Vue, Angular, and other frontends.
 
 > Get paid directly to your crypto wallet instantly. Accept BTC, ETH, USDT, and USDC from customers across all major networks.
+> 
 > Accept payment using your binance regular account QR code payment (C2C). 
 
 **Powered by [PayerURL](https://payerurl.com)**
