@@ -41,19 +41,19 @@ Requires Node.js 18 or newer.
 ### npm
 
 ```bash
-npm install binance-crypto-instant-payout-nodejs
+npm i @muhitmonsur/crypto-payment-gateway-binance-api
 ```
 
 ### Yarn
 
 ```bash
-yarn add binance-crypto-instant-payout-nodejs
+yarn add @muhitmonsur/crypto-payment-gateway-binance-api
 ```
 
 ### pnpm
 
 ```bash
-pnpm add binance-crypto-instant-payout-nodejs
+pnpm add @muhitmonsur/crypto-payment-gateway-binance-api
 ```
 
 ### Import
