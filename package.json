@@ -12,7 +12,7 @@
     "bitcoin payment",
     "crypto api",
     "crypto on-ramp",
-    "card to crypto",
+    "card to crypto"
   ],
   "type": "module",
   "main": "./dist/index.cjs",
@@ -48,10 +48,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/muhitmonsur/binance-crypto-instant-payout-nodejs.git"
+    "url": "git+https://github.com/muhitmonsur/crypto-payment-gateway-binance-api.git"
   },
   "bugs": {
-    "url": "https://github.com/muhitmonsur/binance-crypto-instant-payout-nodejs/issues"
+    "url": "https://github.com/muhitmonsur/crypto-payment-gateway-binance-api/issues"
   },
   "homepage": "https://payerurl.com",
   "devDependencies": {
