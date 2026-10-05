@@ -1,8 +1,10 @@
-#  Crypto gateway || Binance API ( do not need merchant account) || all instant payout  
+# Crypto gateway || Binance API (no merchant account needed) || all instant payout
 
-[![npm version](https://img.shields.io/npm/v/binance-crypto-instant-payout-nodejs.svg)](https://www.npmjs.com/package/binance-crypto-instant-payout-nodejs)
-[![npm downloads](https://img.shields.io/npm/dm/binance-crypto-instant-payout-nodejs.svg)](https://www.npmjs.com/package/binance-crypto-instant-payout-nodejs)
-[![license](https://img.shields.io/npm/l/binance-crypto-instant-payout-nodejs.svg)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/@muhitmonsur/crypto-payment-gateway-binance-api.svg)](https://www.npmjs.com/package/@muhitmonsur/crypto-payment-gateway-binance-api)
+[![npm downloads](https://img.shields.io/npm/dm/@muhitmonsur/crypto-payment-gateway-binance-api.svg)](https://www.npmjs.com/package/@muhitmonsur/crypto-payment-gateway-binance-api)
+[![license](https://img.shields.io/npm/l/@muhitmonsur/crypto-payment-gateway-binance-api.svg)](LICENSE)
+
+
 
 Server-side SDK for connecting **Node.js** applications through payerurl api . Use it with Express, Next.js, NestJS, Nuxt, or any Node backend serving React, Vue, Angular, and other frontends.
 
